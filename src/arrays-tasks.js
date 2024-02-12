@@ -20,8 +20,10 @@
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  let arr = [];
+  arr = Array.from({ length: end - start + 1 }, (_, index) => start + index);
+  return arr;
 }
 
 /**
@@ -37,8 +39,19 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  let maxLength = 0;
+  if (arr1.length > arr2.length) {
+    maxLength = arr1.length;
+  } else {
+    maxLength = arr2.length;
+  }
+  let arr = [];
+  arr = Array.from(
+    { length: maxLength },
+    (_, index) => (arr1[index] || 0) + (arr2[index] || 0)
+  );
+  return arr;
 }
 
 /**
@@ -53,8 +66,13 @@ function sumArrays(/* arr1, arr2 */) {
  *    findElement(['Array', 'Number', 'string'], 'Date') => -1
  *    findElement([0, 1, 2, 3, 4, 5], 5) => 5
  */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  let indexOfSearchElem = 0;
+  indexOfSearchElem = arr.findIndex((item) => item === value);
+  if (typeof indexOfSearchElem !== 'number') {
+    indexOfSearchElem = -1;
+  }
+  return indexOfSearchElem;
 }
 
 /**
@@ -71,8 +89,9 @@ function findElement(/* arr, value */) {
  *    findAllOccurrences([ null, undefined, null ], null) => 2
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  const filterArr = arr.filter((el) => el === item);
+  return filterArr.length;
 }
 
 /**
@@ -87,8 +106,18 @@ function findAllOccurrences(/* arr, item */) {
  *    removeFalsyValues([ 1, 2, 3, 4, 5, 'false' ]) => [ 1, 2, 3, 4, 5, 'false' ]
  *    removeFalsyValues([ false, 0, NaN, '', undefined ]) => [ ]
  */
-function removeFalsyValues(/* arr */) {
-  throw new Error('Not implemented');
+function removeFalsyValues(arr) {
+  const isFalsy = (value) =>
+    !(
+      value === false ||
+      value === null ||
+      value === 0 ||
+      value === '' ||
+      value === undefined ||
+      Number.isNaN(value)
+    );
+  const filtered = arr.filter(isFalsy);
+  return filtered;
 }
 
 /**
@@ -101,8 +130,10 @@ function removeFalsyValues(/* arr */) {
  *    getStringsLength([ '', 'a', 'bc', 'def', 'ghij' ]) => [ 0, 1, 2, 3, 4 ]
  *    getStringsLength([ 'angular', 'react', 'ember' ]) => [ 7, 5, 5 ]
  */
-function getStringsLength(/* arr */) {
-  throw new Error('Not implemented');
+function getStringsLength(arr) {
+  let countArr = [];
+  countArr = arr.map((el) => el.length);
+  return countArr;
 }
 
 /**
@@ -119,8 +150,20 @@ function getStringsLength(/* arr */) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  let averageOfEl = 0;
+  const sumWithInitial = arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    averageOfEl
+  );
+  if (arr.length === 0) {
+    averageOfEl = 0;
+  } else {
+    averageOfEl = sumWithInitial / arr.length;
+  }
+
+  const avr = Math.round(averageOfEl * 100) / 100;
+  return avr;
 }
 
 /**
@@ -133,8 +176,9 @@ function getAverage(/* arr */) {
  *    isSameLength(['orange', 'banana', 'cherry']) => true
  *    isSameLength(['cat', 'dog', 'elephant']) => false
  */
-function isSameLength(/* arr */) {
-  throw new Error('Not implemented');
+function isSameLength(arr) {
+  const lengthArr = arr.map((el) => el.length);
+  return lengthArr.every((el, index, array) => el === array[0]);
 }
 
 /**
@@ -148,8 +192,8 @@ function isSameLength(/* arr */) {
  *    isValueEqualsIndex([2, 1, 0, 4, 5]) => true
  *    isValueEqualsIndex([10, 20, 30, 40, 50]) => false
  */
-function isValueEqualsIndex(/* arr */) {
-  throw new Error('Not implemented');
+function isValueEqualsIndex(arr) {
+  return arr.some((value, index) => value === index);
 }
 
 /**

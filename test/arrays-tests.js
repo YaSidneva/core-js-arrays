@@ -148,8 +148,7 @@ describe('arrays-tasks', () => {
           actual,
           `Number of occurrences of ${JSON.stringify(
             data.item
-          )} in ${JSON.stringify(data.arr)} is ${
-            data.expected
+          )} in ${JSON.stringify(data.arr)} is ${data.expected
           }, but actually ${actual})`
         );
       });
@@ -644,8 +643,7 @@ describe('arrays-tasks', () => {
           actual,
           `getElementByIndices(${JSON.stringify(data.arr)}, ${JSON.stringify(
             data.indexes
-          )}) returns an incorrect result. Expected ${
-            data.expected
+          )}) returns an incorrect result. Expected ${data.expected
           }, but actual ${actual}`
         );
       });
